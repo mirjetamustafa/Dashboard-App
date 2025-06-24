@@ -14,13 +14,19 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material'
-import styled from 'styled-components'
+//import styled from 'styled-components'
+import { styled } from '@mui/material/styles'
 
-const StyledToolbar = styled(Toolbar)({
+const StyledToolbar = styled(Toolbar)(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === 'dark'
+      ? '#1f1f1f'
+      : theme.palette.background.default,
+  color: theme.palette.text.primary,
+
   display: 'flex',
   justifyContent: 'space-between',
-  bgcolor: 'white',
-})
+}))
 
 const StyledMenuItem = styled(MenuItem)({
   display: 'flex',
@@ -47,13 +53,14 @@ const Navbar = ({ mode, setMode }) => {
   }
 
   return (
-    <AppBar position="sticky">
-      <StyledToolbar bgcolor={'background.default'} color={'text.primary'}>
+    <AppBar position="sticky" elevation={0}>
+      <StyledToolbar>
         <Box
           sx={{
             flexGrow: 1,
-            display: { xs: 'flex', md: 'none', color: 'black' },
+            display: { xs: 'flex', md: 'none' },
           }}
+          color={'text.primary'}
         >
           <IconButton
             size="large"
