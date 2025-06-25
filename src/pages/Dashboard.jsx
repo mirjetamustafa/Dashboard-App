@@ -19,7 +19,7 @@ const Dashboard = () => {
   }
 
   return (
-    <Box>
+    <Box sx={{ mt: 9 }}>
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Box
           flex={1}

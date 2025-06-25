@@ -20,7 +20,7 @@ const menuItems = [
 
 const Sidebar = ({ onSelect, activeSection }) => {
   return (
-    <Box sx={{}}>
+    <Box sx={{}} position="fixed">
       <List>
         {menuItems.map((item) => (
           <ListItemButton

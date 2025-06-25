@@ -55,7 +55,7 @@ const Navbar = ({ mode, setMode }) => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="sticky" elevation={0}>
+      <AppBar position="fixed" elevation={0}>
         <StyledToolbar sx={{ boxShadow: 1 }}>
           <Box
             sx={{
