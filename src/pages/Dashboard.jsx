@@ -8,18 +8,18 @@ import Feeds from './Feeds'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import { Link } from 'react-router-dom'
 
-const Dashboard = () => {
+const Dashboard = ({ mode }) => {
   const [section, setSection] = useState('dashboard')
 
   const renderContent = () => {
     if (section === 'users') return <Users />
     if (section === 'analytics') return <Analytics />
     if (section === 'settings') return <Settings />
-    return <Feeds />
+    return <Feeds mode={mode} />
   }
 
   return (
-    <Box sx={{ mt: 9 }}>
+    <Box sx={{ pt: 9 }}>
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Box
           flex={1}

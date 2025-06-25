@@ -26,7 +26,7 @@ function App() {
             element={
               <>
                 <Navbar mode={mode} setMode={setMode} />
-                <Dashboard />
+                <Dashboard mode={mode} />
               </>
             }
           />
