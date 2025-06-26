@@ -20,8 +20,16 @@ const menuItems = [
 
 const Sidebar = ({ onSelect, activeSection }) => {
   return (
-    <Box sx={{}} position="fixed">
-      <List>
+    <Box
+      sx={{
+        boxShadow: '1px 0 3px -2px rgba(0,0,0,0.3)',
+        height: '100%',
+        width: '20%',
+        pt: 2,
+      }}
+      position="fixed"
+    >
+      <List sx={{ m: 1 }}>
         {menuItems.map((item) => (
           <ListItemButton
             key={item.id}

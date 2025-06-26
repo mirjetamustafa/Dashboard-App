@@ -1,7 +1,16 @@
-import { Box, Card, CardContent, Grid, Paper, Typography } from '@mui/material'
+import {
+  Box,
+  Card,
+  CardContent,
+  Grid,
+  Paper,
+  Stack,
+  Typography,
+} from '@mui/material'
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline'
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
+import SalesOverview from '../components/SalesOverview'
 
 const Feeds = ({ mode }) => {
   return (
@@ -190,6 +199,34 @@ const Feeds = ({ mode }) => {
           </Card>
         </Grid>
       </Grid>
+
+      <Stack
+        justifyContent="space-between"
+        sx={{ flexDirection: { xs: 'column', md: 'row' }, mt: 9 }}
+      >
+        <Box
+          flex={4}
+          bgcolor={'background.default'}
+          color={'text.primary'}
+          sx={{
+            p: 2,
+            m: 1,
+            border: 1,
+            borderColor: '#e0e0e0',
+            borderRadius: 2,
+          }}
+        >
+          <Typography variant="h6" sx={{ fontWeight: 'regular' }}>
+            Sales Overview
+          </Typography>
+
+          <SalesOverview />
+        </Box>
+
+        <Box flex={2} sx={{ p: 2, m: 1 }} bgcolor={'red'}>
+          <Typography>HEllo</Typography>
+        </Box>
+      </Stack>
     </Box>
   )
 }

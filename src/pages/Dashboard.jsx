@@ -20,7 +20,7 @@ const Dashboard = ({ mode }) => {
 
   return (
     <Box sx={{ pt: 9 }}>
-      <Stack direction="row" spacing={2} justifyContent="space-between">
+      <Stack direction="row" justifyContent="space-between">
         <Box
           flex={1}
           p={2}
@@ -31,7 +31,11 @@ const Dashboard = ({ mode }) => {
           <Sidebar onSelect={setSection} activeSection={section} />
         </Box>
 
-        <Box flex={4} p={2}>
+        <Box
+          flex={4}
+          p={2}
+          sx={{ bgcolor: mode === 'light' ? '#fafafa' : 'black' }}
+        >
           <Box sx={{ display: 'flex', gap: 1, mb: 2, alignItems: 'center' }}>
             <Button
               onClick={() => setSection('dashboard')}
