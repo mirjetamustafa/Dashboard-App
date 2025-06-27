@@ -11,6 +11,7 @@ import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline'
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import SalesOverview from '../components/SalesOverview'
+import RecentActivity from '../components/RecentActivity'
 
 const Feeds = ({ mode }) => {
   return (
@@ -223,8 +224,19 @@ const Feeds = ({ mode }) => {
           <SalesOverview />
         </Box>
 
-        <Box flex={2} sx={{ p: 2, m: 1 }} bgcolor={'red'}>
-          <Typography>HEllo</Typography>
+        <Box
+          flex={2}
+          sx={{
+            p: 2,
+            m: 1,
+            border: 1,
+            borderColor: '#e0e0e0',
+            borderRadius: 2,
+          }}
+          bgcolor={'background.default'}
+          color={'text.primary'}
+        >
+          <RecentActivity mode={mode} />
         </Box>
       </Stack>
     </Box>
