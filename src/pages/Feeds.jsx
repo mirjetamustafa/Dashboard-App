@@ -14,7 +14,7 @@ import SalesOverview from '../components/SalesOverview'
 import RecentActivity from '../components/RecentActivity'
 import MonthyTrends from '../components/MonthyTrends'
 
-const Feeds = ({ mode }) => {
+const Feeds = ({ mode, users }) => {
   return (
     <Box>
       <Typography variant="h4" fontWeight={700}>
@@ -257,7 +257,17 @@ const Feeds = ({ mode }) => {
             borderRadius: 2,
           }}
         >
-          Hello
+          <div>
+            <ul>
+              {users.map((user) => (
+                <li key={user.id}>
+                  {user.firstName} {user.lastname} -{' '}
+                  <strong>{user.role}</strong> --
+                  {user.email} {user.status} {user.lastLogin}
+                </li>
+              ))}
+            </ul>
+          </div>
         </Box>
         <Box
           flex={4}

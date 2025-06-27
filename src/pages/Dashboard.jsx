@@ -8,14 +8,14 @@ import Feeds from './Feeds'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import { Link } from 'react-router-dom'
 
-const Dashboard = ({ mode }) => {
+const Dashboard = ({ mode, users }) => {
   const [section, setSection] = useState('dashboard')
 
   const renderContent = () => {
     if (section === 'users') return <Users />
     if (section === 'analytics') return <Analytics />
     if (section === 'settings') return <Settings />
-    return <Feeds mode={mode} />
+    return <Feeds mode={mode} users={users} />
   }
 
   return (
