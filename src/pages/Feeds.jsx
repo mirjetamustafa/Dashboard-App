@@ -12,6 +12,7 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import SalesOverview from '../components/SalesOverview'
 import RecentActivity from '../components/RecentActivity'
+import MonthyTrends from '../components/MonthyTrends'
 
 const Feeds = ({ mode }) => {
   return (
@@ -237,6 +238,43 @@ const Feeds = ({ mode }) => {
           color={'text.primary'}
         >
           <RecentActivity mode={mode} />
+        </Box>
+      </Stack>
+
+      <Stack
+        justifyContent="space-between"
+        sx={{ flexDirection: { xs: 'column', md: 'row' }, mt: 4, gap: 1 }}
+      >
+        <Box
+          flex={4}
+          bgcolor={'background.default'}
+          color={'text.primary'}
+          sx={{
+            p: 2,
+            m: 1,
+            border: 1,
+            borderColor: '#e0e0e0',
+            borderRadius: 2,
+          }}
+        >
+          Hello
+        </Box>
+        <Box
+          flex={4}
+          bgcolor={'background.default'}
+          color={'text.primary'}
+          sx={{
+            p: 2,
+            m: 1,
+            border: 1,
+            borderColor: '#e0e0e0',
+            borderRadius: 2,
+          }}
+        >
+          <Typography variant="h6" sx={{ fontWeight: 'regular' }}>
+            Monthly Trends
+          </Typography>
+          <MonthyTrends />
         </Box>
       </Stack>
     </Box>
