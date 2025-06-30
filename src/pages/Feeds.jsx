@@ -13,6 +13,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import SalesOverview from '../components/SalesOverview'
 import RecentActivity from '../components/RecentActivity'
 import MonthyTrends from '../components/MonthyTrends'
+import UserEngagement from '../components/UserEngagement'
 
 const Feeds = ({ mode, users }) => {
   return (
@@ -257,17 +258,10 @@ const Feeds = ({ mode, users }) => {
             borderRadius: 2,
           }}
         >
-          <div>
-            <ul>
-              {users.map((user) => (
-                <li key={user.id}>
-                  {user.firstName} {user.lastname} -{' '}
-                  <strong>{user.role}</strong> --
-                  {user.email} {user.status} {user.lastLogin}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <Typography variant="h6" sx={{ fontWeight: 'regular' }}>
+            User Engagement
+          </Typography>
+          <UserEngagement />
         </Box>
         <Box
           flex={4}

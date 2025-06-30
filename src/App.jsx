@@ -10,6 +10,15 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 function App() {
+  const generateRandomDate = () => {
+    const start = new Date(2023, 0, 1)
+    const end = new Date(2023, 11, 31)
+    const date = new Date(
+      start.getTime() + Math.random() * (end.getTime() - start.getTime())
+    )
+    return date.toLocaleDateString('en-GB')
+  }
+
   const [users, setUsers] = useState([])
   useEffect(() => {
     axios
@@ -17,14 +26,16 @@ function App() {
       .then((res) => {
         const data = res.data.users
 
-        const usersWithRoles = data.map((user, i) => ({
+        const usersWithRoles = data.map((user, index) => ({
           ...user,
-          role: ['admin', 'manager', 'user'][i % 3],
+          role: ['admin', 'manager', 'user'][index % 3],
+          status: index === 2 ? 'Inactive' : 'Active',
+          lastLogin: generateRandomDate(),
         }))
         setUsers(usersWithRoles)
       })
       .catch((error) => {
-        console.error('Gabim ne marrjen e perdoruesve')
+        console.error('Gabim ne marrjen e perdoruesve', error)
       })
   }, [])
 
