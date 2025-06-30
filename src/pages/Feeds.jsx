@@ -12,10 +12,39 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import SalesOverview from '../components/SalesOverview'
 import RecentActivity from '../components/RecentActivity'
-import MonthyTrends from '../components/MonthyTrends'
+import MonthlyTrends from '../components/MonthlyTrends'
 import UserEngagement from '../components/UserEngagement'
 
+const data = [
+  { month: 'Jan', revenue: 4000, profit: 2400 },
+  { month: 'Feb', revenue: 3000, profit: 1398 },
+  { month: 'Mar', revenue: 2000, profit: 9800 },
+  { month: 'Apr', revenue: 2780, profit: 3908 },
+  { month: 'May', revenue: 1890, profit: 4800 },
+  { month: 'Jun', revenue: 2390, profit: 3800 },
+  { month: 'Jul', revenue: 3490, profit: 4300 },
+  { month: 'Aug', revenue: 4000, profit: 2400 },
+  { month: 'Sep', revenue: 3000, profit: 1398 },
+  { month: 'Oct', revenue: 2000, profit: 9800 },
+  { month: 'Nov', revenue: 2780, profit: 3908 },
+  { month: 'Dec', revenue: 3890, profit: 4800 },
+]
+
+const monthlyTrends = [
+  { month: 'Jan', sales: 4000, orders: 2400 },
+  { month: 'Feb', sales: 3000, orders: 1398 },
+  { month: 'Mar', sales: 2000, orders: 9800 },
+  { month: 'Apr', sales: 2780, orders: 3908 },
+  { month: 'May', sales: 1890, orders: 4800 },
+  { month: 'Jun', sales: 2390, orders: 3800 },
+]
+
 const Feeds = ({ mode, users }) => {
+  const totalRevenue = data.reduce((sum, d) => sum + d.revenue, 0)
+  const formatRevenuse = totalRevenue.toLocaleString()
+
+  const totalOrders = monthlyTrends.reduce((ord, o) => ord + o.orders, 0)
+  const formatOrders = totalOrders.toLocaleString()
   return (
     <Box>
       <Typography variant="h4" fontWeight={700}>
@@ -51,7 +80,7 @@ const Feeds = ({ mode, users }) => {
                   }}
                 />
               </Box>
-              <Typography variant="h6">12,361</Typography>
+              <Typography variant="h6">{users.length}</Typography>
               <Typography
                 variant="body2"
                 sx={{
@@ -95,7 +124,7 @@ const Feeds = ({ mode, users }) => {
                   }}
                 />
               </Box>
-              <Typography variant="h6">24,780</Typography>
+              <Typography variant="h6">{formatRevenuse}</Typography>
               <Typography
                 variant="body2"
                 sx={{
@@ -139,7 +168,7 @@ const Feeds = ({ mode, users }) => {
                   }}
                 />
               </Box>
-              <Typography variant="h6">1,482</Typography>
+              <Typography variant="h6">{formatOrders}</Typography>
               <Typography
                 variant="body2"
                 sx={{
@@ -223,7 +252,7 @@ const Feeds = ({ mode, users }) => {
             Sales Overview
           </Typography>
 
-          <SalesOverview />
+          <SalesOverview data={data} />
         </Box>
 
         <Box
@@ -278,7 +307,7 @@ const Feeds = ({ mode, users }) => {
           <Typography variant="h6" sx={{ fontWeight: 'regular' }}>
             Monthly Trends
           </Typography>
-          <MonthyTrends />
+          <MonthlyTrends monthlyTrends={monthlyTrends} />
         </Box>
       </Stack>
     </Box>

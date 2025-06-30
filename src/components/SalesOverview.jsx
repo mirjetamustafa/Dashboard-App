@@ -10,22 +10,7 @@ import {
   Line,
 } from 'recharts'
 
-const data = [
-  { month: 'Jan', revenue: 4000, profit: 2400 },
-  { month: 'Feb', revenue: 3000, profit: 1398 },
-  { month: 'Mar', revenue: 2000, profit: 9800 },
-  { month: 'Apr', revenue: 2780, profit: 3908 },
-  { month: 'May', revenue: 1890, profit: 4800 },
-  { month: 'Jun', revenue: 2390, profit: 3800 },
-  { month: 'Jul', revenue: 3490, profit: 4300 },
-  { month: 'Aug', revenue: 4000, profit: 2400 },
-  { month: 'Sep', revenue: 3000, profit: 1398 },
-  { month: 'Oct', revenue: 2000, profit: 9800 },
-  { month: 'Nov', revenue: 2780, profit: 3908 },
-  { month: 'Dec', revenue: 3890, profit: 4800 },
-]
-
-const SalesOverview = () => {
+const SalesOverview = ({ data }) => {
   return (
     <Box sx={{ mt: 5 }}>
       <ResponsiveContainer width="100%" height={350}>
