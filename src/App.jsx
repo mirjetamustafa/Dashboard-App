@@ -60,16 +60,6 @@ function App() {
               </>
             }
           />
-
-          <Route
-            path="/user"
-            element={
-              <>
-                <Navbar mode={mode} setMode={setMode} />
-                <Users />
-              </>
-            }
-          />
         </Routes>
       </Box>
     </ThemeProvider>

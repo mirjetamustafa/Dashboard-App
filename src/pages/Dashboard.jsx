@@ -12,7 +12,7 @@ const Dashboard = ({ mode, users }) => {
   const [section, setSection] = useState('dashboard')
 
   const renderContent = () => {
-    if (section === 'users') return <Users />
+    if (section === 'users') return <Users mode={mode} users={users} />
     if (section === 'analytics') return <Analytics />
     if (section === 'settings') return <Settings />
     return <Feeds mode={mode} users={users} />
