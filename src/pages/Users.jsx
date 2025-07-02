@@ -5,13 +5,17 @@ import {
   InputAdornment,
   Paper,
   Stack,
+  Table,
   TextField,
   Typography,
 } from '@mui/material'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
+import TableUsers from '../components/TableUsers'
+import { useState } from 'react'
 
 const Users = ({ mode, users }) => {
+  const [searchUser, setSearchUser] = useState('')
   return (
     <Box>
       <Typography variant="h4" fontWeight={700}>
@@ -37,9 +41,10 @@ const Users = ({ mode, users }) => {
           placeholder="Search users..."
           variant="outlined"
           size="small"
+          value={searchUser}
+          onChange={(e) => setSearchUser(e.target.value)}
           sx={{
-            borderRadius: '20px',
-            backgroundColor: '#fff',
+            borderRadius: '5px',
             '& .MuiOutlinedInput-root': {
               borderRadius: '5px',
             },
@@ -62,6 +67,8 @@ const Users = ({ mode, users }) => {
           Add user
         </Button>
       </Paper>
+
+      <TableUsers users={users} mode={mode} searchUser={searchUser} />
     </Box>
   )
 }
