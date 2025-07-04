@@ -6,16 +6,30 @@ import Analytics from './Analytics'
 import Settings from './Settings'
 import Feeds from './Feeds'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
-import { Link } from 'react-router-dom'
+
+const data = [
+  { month: 'Jan', revenue: 4000, profit: 2400 },
+  { month: 'Feb', revenue: 3000, profit: 1398 },
+  { month: 'Mar', revenue: 2000, profit: 9800 },
+  { month: 'Apr', revenue: 2780, profit: 3908 },
+  { month: 'May', revenue: 1890, profit: 4800 },
+  { month: 'Jun', revenue: 2390, profit: 3800 },
+  { month: 'Jul', revenue: 3490, profit: 4300 },
+  { month: 'Aug', revenue: 4000, profit: 2400 },
+  { month: 'Sep', revenue: 3000, profit: 1398 },
+  { month: 'Oct', revenue: 2000, profit: 9800 },
+  { month: 'Nov', revenue: 2780, profit: 3908 },
+  { month: 'Dec', revenue: 3890, profit: 4800 },
+]
 
 const Dashboard = ({ mode, users }) => {
   const [section, setSection] = useState('dashboard')
 
   const renderContent = () => {
     if (section === 'users') return <Users mode={mode} users={users} />
-    if (section === 'analytics') return <Analytics />
+    if (section === 'analytics') return <Analytics users={users} />
     if (section === 'settings') return <Settings />
-    return <Feeds mode={mode} users={users} />
+    return <Feeds mode={mode} users={users} data={data} />
   }
 
   return (
