@@ -135,7 +135,7 @@ const Analytics = ({ users }) => {
           }}
         >
           <Typography variant="h6" sx={{ fontWeight: 'regular' }}>
-            Monthly Trends
+            Conversion Rate
           </Typography>
           <MonthlyTrends monthlyTrends={monthlyTrends} />
         </Box>

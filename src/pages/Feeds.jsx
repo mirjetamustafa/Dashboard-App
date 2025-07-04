@@ -273,7 +273,7 @@ const Feeds = ({ mode, users, data }) => {
           }}
         >
           <Typography variant="h6" sx={{ fontWeight: 'regular' }}>
-            User Engagement
+            User Statistics
           </Typography>
           <UserEngagement />
         </Box>
