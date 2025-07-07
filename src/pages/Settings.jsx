@@ -5,8 +5,13 @@ import {
   FormControl,
   TextField,
   TextareaAutosize,
+  Button,
 } from '@mui/material'
 import { TabContext, TabList, TabPanel } from '@mui/lab'
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined'
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined'
+import ShieldOutlinedIcon from '@mui/icons-material/ShieldOutlined'
+import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined'
 import { useState } from 'react'
 
 const Settings = () => {
@@ -36,10 +41,30 @@ const Settings = () => {
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label="">
-              <Tab label="Item One" value="1" />
-              <Tab label="Item Two" value="2" />
-              <Tab label="Item Three" value="3" />
-              <Tab label="Item Four" value="4" />
+              <Tab
+                icon={<PersonOutlineOutlinedIcon />}
+                iconPosition="start"
+                label="Profile"
+                value="1"
+              />
+              <Tab
+                icon={<NotificationsNoneOutlinedIcon />}
+                iconPosition="start"
+                label="Notifications"
+                value="2"
+              />
+              <Tab
+                icon={<ShieldOutlinedIcon />}
+                iconPosition="start"
+                label="Security"
+                value="3"
+              />
+              <Tab
+                icon={<RemoveRedEyeOutlinedIcon />}
+                iconPosition="start"
+                label="Appearance"
+                value="4"
+              />
             </TabList>
           </Box>
 
@@ -121,6 +146,15 @@ const Settings = () => {
                 style={{}}
               />
             </FormControl>
+
+            <Box sx={{ textTransform: 'uppercase', mt: 3, ml: 4 }}>
+              <Button variant="contained" sx={{ m: 1 }}>
+                Save changes
+              </Button>
+              <Button variant="outlined" sx={{ m: 1 }}>
+                Cancel
+              </Button>
+            </Box>
           </TabPanel>
           <TabPanel value="2">ITem two</TabPanel>
           <TabPanel value="3">ITem three</TabPanel>
