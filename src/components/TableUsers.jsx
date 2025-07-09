@@ -62,9 +62,14 @@ const TableUsers = ({ users, mode, searchUser }) => {
   })
 
   return (
-    <Paper sx={{ width: '100%', overflowX: 'auto', mt: 5 }}>
-      <TableContainer>
-        <Table>
+    <Paper
+      sx={{
+        width: { xs: '70%', md: '100%' },
+        mt: 5,
+      }}
+    >
+      <TableContainer sx={{ overflowX: { xs: 'auto', md: 'visible' } }}>
+        <Table sx={{ minWidth: 650 }}>
           <TableHead
             sx={{ backgroundColor: mode === 'light' ? '#f5f5f5' : '#424242' }}
           >

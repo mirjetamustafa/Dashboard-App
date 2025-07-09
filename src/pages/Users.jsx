@@ -31,8 +31,9 @@ const Users = ({ mode, users }) => {
         elevation={1}
         sx={{
           display: 'flex',
-          justifyContent: 'space-between',
+          justifyContent: { md: 'space-between' },
           mt: 9,
+          width: { xs: '54%', md: '96%' },
           p: '20px',
           borderRadius: '5px',
         }}
@@ -48,7 +49,8 @@ const Users = ({ mode, users }) => {
             '& .MuiOutlinedInput-root': {
               borderRadius: '5px',
             },
-            width: '30%',
+            width: { md: '30%' },
+            mr: { xs: 5 },
           }}
           InputProps={{
             startAdornment: (
