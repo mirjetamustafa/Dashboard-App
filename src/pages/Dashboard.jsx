@@ -22,13 +22,14 @@ const data = [
   { month: 'Dec', revenue: 3890, profit: 4800 },
 ]
 
-const Dashboard = ({ mode, users }) => {
+const Dashboard = ({ mode, users, setMode }) => {
   const [section, setSection] = useState('dashboard')
 
   const renderContent = () => {
     if (section === 'users') return <Users mode={mode} users={users} />
     if (section === 'analytics') return <Analytics users={users} />
-    if (section === 'settings') return <Settings />
+    if (section === 'settings')
+      return <Settings mode={mode} setMode={setMode} />
     return <Feeds mode={mode} users={users} data={data} />
   }
 
