@@ -8,6 +8,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { Box } from '@mui/material'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import Login from '../src/pages/Login'
 
 function App() {
   const generateRandomDate = () => {
@@ -57,6 +58,14 @@ function App() {
               <>
                 <Navbar mode={mode} setMode={setMode} />
                 <Dashboard mode={mode} setMode={setMode} users={users} />
+              </>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <>
+                <Login />
               </>
             }
           />
