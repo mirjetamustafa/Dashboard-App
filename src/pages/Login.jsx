@@ -26,7 +26,10 @@ const Login = () => {
         mt: 9,
       }}
     >
-      <Paper elevation={2} sx={{ width: '40%', textAlign: 'center', p: 2 }}>
+      <Paper
+        elevation={2}
+        sx={{ width: { xs: '85%', md: '40%' }, textAlign: 'center', p: 2 }}
+      >
         <Typography variant="h6">Sign in</Typography>
         <Typography variant="body2" color="gray">
           Welcome user, please sign in to continue
@@ -48,7 +51,7 @@ const Login = () => {
           <FormControlLabel
             control={<Checkbox />}
             label="Remember me"
-            sx={{ color: 'gray', ml: 10 }}
+            sx={{ color: 'gray', ml: { xs: 0, md: 10 } }}
           />
           <Box sx={{ mt: 1 }}>
             <Link to={''} style={{ color: '#1e88e5' }}>
