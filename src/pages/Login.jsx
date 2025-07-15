@@ -15,8 +15,9 @@ import { FcGoogle } from 'react-icons/fc'
 import { BiLogoFacebookCircle } from 'react-icons/bi'
 import { FaLinkedin } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-const Login = () => {
+const Login = (props) => {
   return (
     <Grid
       sx={{
@@ -98,4 +99,10 @@ const Login = () => {
   )
 }
 
-export default Login
+const mapStateToProps = (state) => {
+  return {}
+}
+
+const mapDispatchToProps = (dispatch) => ({})
+
+export default connect(mapDispatchToProps, mapStateToProps)(Login)
