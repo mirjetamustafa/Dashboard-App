@@ -17,6 +17,10 @@ import {
 } from '@mui/material'
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
 import { styled } from '@mui/material/styles'
+import { connect } from 'react-redux'
+import { SignOutAPI } from '../actions'
+import { signOut } from 'firebase/auth'
+import { Navigate } from 'react-router-dom'
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor:
@@ -34,7 +38,8 @@ const StyledMenuItem = styled(MenuItem)({
   flexDirection: 'column',
 })
 
-const Navbar = ({ mode, setMode }) => {
+const Navbar = (props) => {
+  const { mode, setMode, user } = props
   const [profil, setProfil] = React.useState(null)
   const open = Boolean(profil)
   const profilClick = (event) => {
@@ -55,6 +60,7 @@ const Navbar = ({ mode, setMode }) => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
+      {!props.user && <Navigate to="/login" />}
       <AppBar position="fixed" elevation={0}>
         <StyledToolbar sx={{ boxShadow: 1 }}>
           <Box
@@ -220,7 +226,11 @@ const Navbar = ({ mode, setMode }) => {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={profilClick}
               >
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                {props.user && props.user.photo ? (
+                  <Avatar alt="" src={props.user.photo} />
+                ) : (
+                  <Avatar alt="" src="/static/images/avatar/2.jpg" />
+                )}
               </IconButton>
 
               <Menu
@@ -237,7 +247,13 @@ const Navbar = ({ mode, setMode }) => {
               >
                 <MenuItem onClick={profilClose}>Profile</MenuItem>
                 <MenuItem onClick={profilClose}>Account</MenuItem>
-                <MenuItem onClick={profilClose}>Logout</MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    profilClose(), props.signOut()
+                  }}
+                >
+                  Logout
+                </MenuItem>
               </Menu>
             </Tooltip>
           </Box>
@@ -247,4 +263,14 @@ const Navbar = ({ mode, setMode }) => {
   )
 }
 
-export default Navbar
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  signOut: () => dispatch(SignOutAPI()),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

@@ -33,8 +33,29 @@ export function getUserAuth() {
   return (dispatch) => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
-        dispatch(setUser(user))
+        const cleanUser = {
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL,
+          uid: user.uid,
+        }
+        dispatch(setUser(cleanUser))
+      } else {
+        dispatch(setUser(null))
       }
     })
+  }
+}
+
+export function SignOutAPI() {
+  return (dispatch) => {
+    auth
+      .signOut()
+      .then(() => {
+        dispatch(setUser(null))
+      })
+      .catch((error) => {
+        console.log(error.message)
+      })
   }
 }

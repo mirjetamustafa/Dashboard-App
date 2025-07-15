@@ -6,6 +6,7 @@ import Analytics from './Analytics'
 import Settings from './Settings'
 import Feeds from './Feeds'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
+import { connect } from 'react-redux'
 
 const data = [
   { month: 'Jan', revenue: 4000, profit: 2400 },
@@ -22,7 +23,8 @@ const data = [
   { month: 'Dec', revenue: 3890, profit: 4800 },
 ]
 
-const Dashboard = ({ mode, users, setMode }) => {
+const Dashboard = (props) => {
+  const { mode, users, setMode, user } = props
   const [section, setSection] = useState('dashboard')
 
   const renderContent = () => {
@@ -89,4 +91,12 @@ const Dashboard = ({ mode, users, setMode }) => {
   )
 }
 
-export default Dashboard
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
