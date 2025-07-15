@@ -9,8 +9,14 @@ import { Box } from '@mui/material'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Login from '../src/pages/Login'
+import { getUserAuth } from './actions'
+import { connect } from 'react-redux'
 
-function App() {
+function App(props) {
+  useEffect(() => {
+    props.getUserAuth()
+  }, [])
+
   const generateRandomDate = () => {
     const start = new Date(2023, 0, 1)
     const end = new Date(2023, 11, 31)
@@ -75,4 +81,12 @@ function App() {
   )
 }
 
-export default App
+const mapStateToProps = (state) => {
+  return {}
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  getUserAuth: () => dispatch(getUserAuth()),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

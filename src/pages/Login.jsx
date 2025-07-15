@@ -16,6 +16,8 @@ import { BiLogoFacebookCircle } from 'react-icons/bi'
 import { FaLinkedin } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { SignInAPI } from '../actions'
+import { Navigate } from 'react-router-dom'
 
 const Login = (props) => {
   return (
@@ -27,6 +29,7 @@ const Login = (props) => {
         mt: 9,
       }}
     >
+      {props.user && <Navigate to="/" />}
       <Paper
         elevation={2}
         sx={{ width: { xs: '85%', md: '40%' }, textAlign: 'center', p: 2 }}
@@ -72,7 +75,11 @@ const Login = (props) => {
         <Divider sx={{ color: 'gray', my: 5 }}>or</Divider>
 
         <FormControl sx={{ width: '70%' }}>
-          <Button variant="outlined" startIcon={<FcGoogle />}>
+          <Button
+            onClick={() => props.signIn()}
+            variant="outlined"
+            startIcon={<FcGoogle />}
+          >
             Sign in with Google
           </Button>
         </FormControl>
@@ -100,9 +107,13 @@ const Login = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    user: state.userState.user,
+  }
 }
 
-const mapDispatchToProps = (dispatch) => ({})
+const mapDispatchToProps = (dispatch) => ({
+  signIn: () => dispatch(SignInAPI()),
+})
 
-export default connect(mapDispatchToProps, mapStateToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
