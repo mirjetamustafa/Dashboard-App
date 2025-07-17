@@ -18,8 +18,21 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { SignInAPI } from '../actions'
 import { Navigate } from 'react-router-dom'
+import { useState } from 'react'
+import { SignInWithEmail } from '../actions'
 
 const Login = (props) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleEmailLogiin = (e) => {
+    e.preventDefault()
+    if (!email || !password) {
+      alert('Please fill in all fields')
+      return
+    }
+    props.signInWithEmail(email, password)
+  }
   return (
     <Grid
       sx={{
@@ -39,10 +52,18 @@ const Login = (props) => {
           Welcome user, please sign in to continue
         </Typography>
         <FormControl sx={{ mt: 3, width: '70%' }}>
-          <TextField label="Email Address" type="email" />
+          <TextField
+            label="Email Address"
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </FormControl>
         <FormControl sx={{ mt: 2, width: '70%' }}>
-          <TextField label="Password" type="password" />
+          <TextField
+            label="Password"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </FormControl>
         <Box
           sx={{
@@ -64,7 +85,9 @@ const Login = (props) => {
           </Box>
         </Box>
         <FormControl sx={{ mt: 2, width: '70%' }}>
-          <Button variant="contained">Login</Button>
+          <Button variant="contained" onClick={handleEmailLogiin}>
+            Login
+          </Button>
         </FormControl>
         <Box sx={{ my: 2, width: '100%' }}>
           <Link href="#" style={{ color: '#1e88e5' }}>
@@ -114,6 +137,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   signIn: () => dispatch(SignInAPI()),
+  signInWithEmail: (email, password) =>
+    dispatch(SignInWithEmail(email, password)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

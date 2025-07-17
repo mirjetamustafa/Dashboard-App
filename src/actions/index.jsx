@@ -1,6 +1,7 @@
 import { auth, provider } from '../firebase'
 import { signInWithPopup } from 'firebase/auth'
 import { SET_USER } from './actionType'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 
 export const setUser = (payload) => ({
   type: SET_USER,
@@ -44,6 +45,28 @@ export function getUserAuth() {
         dispatch(setUser(null))
       }
     })
+  }
+}
+
+export function SignInWithEmail(email, password) {
+  return (dispatch) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user
+        const cleanUser = {
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL || '',
+          uid: user.uid,
+        }
+        dispatch({
+          type: 'SET_USER',
+          user: cleanUser,
+        })
+      })
+      .catch((error) => {
+        alert(error.message)
+      })
   }
 }
 
