@@ -11,6 +11,7 @@ import axios from 'axios'
 import Login from '../src/pages/Login'
 import { getUserAuth } from './actions'
 import { connect } from 'react-redux'
+import SignUp from './pages/SignUp'
 
 function App(props) {
   useEffect(() => {
@@ -72,6 +73,14 @@ function App(props) {
             element={
               <>
                 <Login />
+              </>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <>
+                <SignUp />
               </>
             }
           />

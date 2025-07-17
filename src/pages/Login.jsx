@@ -90,7 +90,7 @@ const Login = (props) => {
           </Button>
         </FormControl>
         <Box sx={{ my: 2, width: '100%' }}>
-          <Link href="#" style={{ color: '#1e88e5' }}>
+          <Link to={'/signup'} style={{ color: '#1e88e5' }}>
             Sign up
           </Link>
         </Box>
